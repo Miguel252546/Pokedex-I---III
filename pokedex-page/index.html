@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokédex – Generaciones I a III</title>
+    <meta name="description" content="Pokédex minimalista de Kanto, Johto y Hoenn.">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <!-- Fondos de valle por región -->
+    <div class="region-background kanto-bg" id="region-bg"></div>
+    
+    <!-- Evolución Ralts en movimiento - Lado derecho -->
+    <div class="evolution-train evolution-train-right">
+      <div class="pokemon-sprite gardevoir-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png" alt="Gardevoir" />
+      </div>
+      <div class="pokemon-sprite kirlia-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/281.png" alt="Kirlia" />
+      </div>
+      <div class="pokemon-sprite ralts-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/280.png" alt="Ralts" />
+      </div>
+      <div class="pokemon-sprite lopunny-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/428.png" alt="Lopunny" />
+      </div>
+      <div class="pokemon-sprite buneary-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/427.png" alt="Buneary" />
+      </div>
+      <div class="pokemon-sprite vaporeon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png" alt="Vaporeon" />
+      </div>
+      <div class="pokemon-sprite jolteon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png" alt="Jolteon" />
+      </div>
+      <div class="pokemon-sprite flareon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png" alt="Flareon" />
+      </div>
+      <div class="pokemon-sprite espeon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png" alt="Espeon" />
+      </div>
+      <div class="pokemon-sprite umbreon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png" alt="Umbreon" />
+      </div>
+      <div class="pokemon-sprite eevee-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="Eevee" />
+      </div>
+    </div>
+
+    <!-- Evolución Ralts en movimiento - Lado izquierdo -->
+    <div class="evolution-train evolution-train-left">
+      <div class="pokemon-sprite gardevoir-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png" alt="Gardevoir" />
+      </div>
+      <div class="pokemon-sprite kirlia-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/281.png" alt="Kirlia" />
+      </div>
+      <div class="pokemon-sprite ralts-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/280.png" alt="Ralts" />
+      </div>
+      <div class="pokemon-sprite lopunny-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/428.png" alt="Lopunny" />
+      </div>
+      <div class="pokemon-sprite buneary-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/427.png" alt="Buneary" />
+      </div>
+      <div class="pokemon-sprite vaporeon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png" alt="Vaporeon" />
+      </div>
+      <div class="pokemon-sprite jolteon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png" alt="Jolteon" />
+      </div>
+      <div class="pokemon-sprite flareon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png" alt="Flareon" />
+      </div>
+      <div class="pokemon-sprite espeon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png" alt="Espeon" />
+      </div>
+      <div class="pokemon-sprite umbreon-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png" alt="Umbreon" />
+      </div>
+      <div class="pokemon-sprite eevee-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="Eevee" />
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="container">
+        <h1>Pokédex – Generaciones I a III</h1>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="container">
+        <div class="controls" role="region" aria-label="Filtros de búsqueda">
+          <input id="search" type="search" placeholder="Buscar por nombre…" aria-label="Buscar por nombre" />
+          <select id="gen-filter" aria-label="Filtrar por generación">
+            <option value="">Todas las generaciones</option>
+            <option value="kanto">Kanto</option>
+            <option value="johto">Johto</option>
+            <option value="hoenn">Hoenn</option>
+          </select>
+          <select id="type-filter" aria-label="Filtrar por tipo">
+            <option value="">Todos los tipos</option>
+            <option value="normal">Normal</option>
+            <option value="fire">Fuego</option>
+            <option value="water">Agua</option>
+            <option value="grass">Planta</option>
+            <option value="electric">Eléctrico</option>
+            <option value="ice">Hielo</option>
+            <option value="fighting">Lucha</option>
+            <option value="poison">Veneno</option>
+            <option value="ground">Tierra</option>
+            <option value="flying">Volador</option>
+            <option value="psychic">Psíquico</option>
+            <option value="bug">Bicho</option>
+            <option value="rock">Roca</option>
+            <option value="ghost">Fantasma</option>
+            <option value="dark">Siniestro</option>
+            <option value="dragon">Dragón</option>
+            <option value="steel">Acero</option>
+            <option value="fairy">Hada</option>
+          </select>
+        </div>
+        <section aria-labelledby="grid-title">
+          <h2 id="grid-title" class="visually-hidden">Listado de Pokémon</h2>
+          <div id="grid" class="grid" role="list"></div>
+          <div id="status" class="status" aria-live="polite">Cargando…</div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>
+          Hecho por <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Autor</a>. Datos de <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokeAPI</a>.
+        </small>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal" aria-hidden="true" aria-labelledby="modal-title" role="dialog">
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Cerrar" data-close>&times;</button>
+        <h3 id="modal-title">Detalles</h3>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="./script.js" defer></script>
+  </body>
+  </html>
+
+
